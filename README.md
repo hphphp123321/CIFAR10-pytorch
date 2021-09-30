@@ -27,6 +27,7 @@ Homework for ZJU-CST Artificial Intelligence Safety
  
 ## Testing ##
 **test**
+
 `python test.py --model_name resnet50 --batch_size 64 --worker_num 16 --datasets_path ./dataset/ --pth_path ./model_pth/`
 # Results #
 
