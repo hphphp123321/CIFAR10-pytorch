@@ -53,7 +53,7 @@ learning_rate:1e-2,1e-3
 
 |  y-axis:train_acc   | y-axis:train_loss  |
 |:----:|:----:|
-| <embed src="acc_train_resnet50.svg" type="image/svg+xml" /> | <embed src="loss_train_resnet50.svg" type="image/svg+xml" /> |
+| ![train_acc](acc_train_resnet50.svg ''resnet50'')| ![train_loss](loss_train_resnet50.svg ''resnet50'') |
 
 
 
