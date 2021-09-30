@@ -1,11 +1,11 @@
 # CIFAR-10 #
----
+
 Pytorch implementation for cifar-10 datasets.
 # Background #
----
+
 Homework for ZJU-CST Artificial Intelligence Safety
 # Usage #
----
+
 **Requirements**
 > timm==0.4.12
 > 
@@ -29,7 +29,7 @@ Homework for ZJU-CST Artificial Intelligence Safety
 **test**
 `python test.py --model_name resnet50 --batch_size 64 --worker_num 16 --datasets_path ./dataset/ --pth_path ./model_pth/`
 # Results #
----
+
 **model list**
 
 - self_net: customsize cnn
@@ -54,6 +54,8 @@ learning_rate:1e-2,1e-3
 |  y-axis:train_acc   | y-axis:train_loss  |
 |:----:|:----:|
 | ![train_acc](./acc_train_resnet50.svg)| ![train_loss](./loss_train_resnet50.svg) |
+
+
 
 
 
