@@ -56,6 +56,9 @@ learning_rate:1e-2,1e-3
 |:----:|:----:|
 | ![train_acc](./acc_train_resnet50.svg)| ![train_loss](./loss_train_resnet50.svg) |
 
+# License #
+[MIT](LICENSE)
+
 
 
 
