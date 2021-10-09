@@ -22,7 +22,7 @@ class Net(nn.Module):
         if network in ['vision_transformer']:
             self.network = VisionTransformer(network)
 
-        if network in ['vit_soat']:
+        if network in ['vit_sota']:
             net = timm.create_model("vit_base_patch16_224", pretrained=True)
             net.head = nn.Linear(net.head.in_features, 10)
             self.network = net

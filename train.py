@@ -9,6 +9,7 @@ import os
 import time
 import argparse
 import utils
+from tqdm import tqdm
 
 
 classes = ('plane', 'car', 'bird', 'cat',
@@ -47,7 +48,7 @@ def train(model, pth_dir, epochs, ROOT, batch_size, WORKERS):
         total = 0
         running_loss = 0.0
         total_loss = 0.0
-        for iter, data in enumerate(trainloader, 0):
+        for iter, data in enumerate(tqdm(trainloader)):
             # 获取输入
             inputs, labels = data
             inputs, labels = inputs.to(device), labels.to(device)
@@ -67,7 +68,7 @@ def train(model, pth_dir, epochs, ROOT, batch_size, WORKERS):
             total_loss += loss.item()
             # 打印状态信息
             running_loss += loss.item()
-            if iter % 64 == 63:    # 每1280批次打印一次
+            if iter % 64 == 63:    # 每64批次打印一次
                 print('[%d, %5d] loss: %.3f' %
                       (epoch + 1, iter + 1, running_loss / 64))
                 running_loss = 0.0
@@ -85,38 +86,6 @@ def train(model, pth_dir, epochs, ROOT, batch_size, WORKERS):
         torch.save(state, pth_dir + opt.model_name + "/" + pth_name)
         if epoch > 0:
             os.remove(pth_dir+opt.model_name+"/"+opt.model_name+"_epoch_"+str(epoch-1)+".pth")  # 删除上一个
-
-        # test
-
-        print("\nStart testing")
-        start_time = time.time()
-        correct = 0
-        total = 0
-        total_loss = 0.0
-
-        for iter, data in enumerate(testloader, 0):
-            # 获取输入
-            inputs, labels = data
-            inputs, labels = inputs.to(device), labels.to(device)
-
-            outputs = model(inputs)
-            loss = criterion(outputs, labels)
-            _, predicted = torch.max(outputs, 1)
-
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
-            total_loss += loss.item()
-
-        end_time = time.time()
-        spent_time = end_time - start_time
-        acc = correct / total
-        total_loss /= iter
-        print('Testing: Epoch: %d, loss: %f, Accuracy : %f %%, spent time : %f' % (
-        epoch, total_loss, 100 * correct / total, spent_time))
-        writer.add_scalar("time/test/" + opt.model_name, spent_time, global_step=epoch)
-        writer.add_scalar("loss/test/" + opt.model_name, total_loss, global_step=epoch)
-        writer.add_scalar("acc/test/" + opt.model_name, acc, global_step=epoch)
-
 
     print('Finished Training')
     writer.close()

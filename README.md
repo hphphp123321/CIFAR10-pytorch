@@ -36,14 +36,14 @@ Homework for ZJU-CST Artificial Intelligence Safety
 - self_net: customsize cnn
 - resnet50: based on imagenet pretrained resnet50
 - vision_transformer: patch_size=4 depth=6
-- vit_soat: ViT base (timm transfer)
+- vit_sota: ViT base (timm transfer)
 
 |  Model Name   | Accuracy  |
 |:----:|:----:|
 | Self Net  | 50% |
 | resnet50  | 87% |
 | vision transformer| 80% |
-| vit soat	| 95% |
+| vit sota	| 95% |
 ---
 
 **resnet50**

@@ -9,6 +9,7 @@ import os
 import time
 import argparse
 import utils
+from tqdm import tqdm
 
 
 def test(model, pth_dir, ROOT, batch_size, WORKERS):
@@ -42,7 +43,7 @@ def test(model, pth_dir, ROOT, batch_size, WORKERS):
         total = 0
         total_loss = 0.0
 
-        for iter, data in enumerate(testloader, 0):
+        for iter, data in enumerate(tqdm(testloader)):
             # 获取输入
             inputs, labels = data
             inputs, labels = inputs.to(device), labels.to(device)
