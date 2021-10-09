@@ -2,6 +2,7 @@ import model
 import torch
 import torchvision
 import torchvision.transforms as transforms
+import os
 
 # 默认参数声明
 # batch_size = 64
@@ -17,7 +18,9 @@ img_size = 32  # 输入网络的图片大小
 
 
 
-
+def create_dir_not_exist(path):
+    if not os.path.exists(path):
+        os.mkdir(path)
 
 
 def train_loader(ROOT, batch_size, WORKERS):

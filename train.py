@@ -91,9 +91,7 @@ def train(model, pth_dir, epochs, ROOT, batch_size, WORKERS):
     writer.close()
 
 
-def create_dir_not_exist(path):
-    if not os.path.exists(path):
-        os.mkdir(path)
+
 
 
 if __name__ == '__main__':
@@ -110,8 +108,8 @@ if __name__ == '__main__':
     opt = parser.parse_args()
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    create_dir_not_exist(opt.pth_path)
-    create_dir_not_exist(opt.pth_path+opt.model_name+"/")
+    utils.create_dir_not_exist(opt.pth_path)
+    utils.create_dir_not_exist(opt.pth_path+opt.model_name+"/")
 
     model = (model.Net(opt.model_name)).to(device)           # 确定网络模型
     if opt.model_name == 'vit_soat':
